@@ -17,9 +17,19 @@ def login():
 
         return response
 
-@app.route('/')
-def index():
-    return 'Index page'
+@app.route('/', methods=['GET'])
+def index_page():
+    response = jsonify('Hello World!!!')
+    response.status_code = 200
+    return response
+
+@app.route('/transactions/', methods=['GET'])
+def list_of_transactions():
+    response = jsonify({'balance': 0, 'transactions': [
+        {}
+    ]})
+    response.status_code = 200
+    return response
 
 @app.route('/hello')
 def hello():
