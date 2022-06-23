@@ -26,7 +26,8 @@ def index_page():
 @app.route('/transactions/', methods=['GET'])
 def list_of_transactions():
     response = jsonify({'balance': 0, 'transactions': [
-        {}
+        {'amount': 0.0, 'current_balance': 230, 'description': 'blue jeans', 'id': 2,
+         'initial_balance': 300, 'time': "2019-01-12 09:00:00", 'type': 'expense'}
     ]})
     response.status_code = 200
     return response
