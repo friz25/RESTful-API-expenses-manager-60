@@ -1,6 +1,13 @@
 from flask import Flask, request, jsonify
 app = Flask( __name__ )
 
+global response
+
+response = jsonify({'balance': 0, 'transactions': [
+        {'amount': 0.0, 'current_balance': 230, 'description': 'blue jeans', 'id': 2,
+         'initial_balance': 300, 'time': "2019-01-12 09:00:00", 'type': 'expense'}
+    ]})
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     data = []
@@ -25,6 +32,37 @@ def index_page():
 
 @app.route('/transactions/', methods=['GET'])
 def list_of_transactions():
+    """ Получить список транзакций """
+    response = jsonify({'balance': 0, 'transactions': [
+        {'amount': 0.0, 'current_balance': 230, 'description': 'blue jeans', 'id': 2,
+         'initial_balance': 300, 'time': "2019-01-12 09:00:00", 'type': 'expense'}
+    ]})
+    response.status_code = 200
+    return response
+
+@app.route('/transactions/', methods=['POST'])
+def create_new_transaction():
+    """ Создайте новую транзакцию """
+    response = jsonify({'balance': 0, 'transactions': [
+        {'amount': 0.0, 'current_balance': 230, 'description': 'blue jeans', 'id': 2,
+         'initial_balance': 300, 'time': "2019-01-12 09:00:00", 'type': 'expense'}
+    ]})
+    response.status_code = 200
+    return response
+
+@app.route('/transactions/', methods=['PUT'])
+def list_of_transactions():
+    """ Обновить отдельную транзакцию """
+    response = jsonify({'balance': 0, 'transactions': [
+        {'amount': 0.0, 'current_balance': 230, 'description': 'blue jeans', 'id': 2,
+         'initial_balance': 300, 'time': "2019-01-12 09:00:00", 'type': 'expense'}
+    ]})
+    response.status_code = 200
+    return response
+
+@app.route('/transactions/', methods=['DELETE'])
+def list_of_transactions():
+    """ Удалить отдельную транзакцию """
     response = jsonify({'balance': 0, 'transactions': [
         {'amount': 0.0, 'current_balance': 230, 'description': 'blue jeans', 'id': 2,
          'initial_balance': 300, 'time': "2019-01-12 09:00:00", 'type': 'expense'}
